@@ -71,3 +71,17 @@ export default defineConfig([
   },
 ])
 ```
+# Employee Management System
+
+## screenshots
+
+### Login page
+<img width="1920" height="1080" alt="Login_pg" src="https://github.com/user-attachments/assets/31f1825c-138b-4158-9a1a-7e318e2d8cc9" />
+
+### Dashboard
+<img width="1920" height="1080" alt="Dashboard" src="https://github.com/user-attachments/assets/f484c607-2d17-40b2-90c7-50d4290142b8" />
+
+### Employee List
+<img width="1920" height="1080" alt="Employee_Add" src="https://github.com/user-attachments/assets/b967f9e2-65e1-4b47-9e38-0129da759b02" />
+
+
