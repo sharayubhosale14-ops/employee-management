@@ -1,41 +1,44 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EmployeeDataGrid from "../components/EmployeeDataGrid";
+import AnalyticsChart from "../components/AnalyticsChart";
+import DepartmentPieChart from "../components/DepartmentPieChart";
+import NotificationBell from "../components/NotificationBell";
+import DateTimePickerCard from "../components/DateTimePickerCard";
 
 function Dashboard() {
   const navigate = useNavigate();
 
- const [employees, setEmployees] = useState<any[]>([
-      {
-        id: 1,
-        name: "Rahul Sharma",
-        email: "rahul@gmail.com",
-        department: "HR",
-        salary: "30000",
-      },
-      {
-        id: 2,
-        name: "Priya Patil",
-        email: "priya@gmail.com",
-        department: "IT",
-        salary: "50000",
-      },
-    ]);
+  const [employees, setEmployees] = useState<any[]>([
+    {
+      id: 1,
+      name: "Rahul Sharma",
+      email: "rahul@gmail.com",
+      department: "HR",
+      salary: "30000",
+    },
+    {
+      id: 2,
+      name: "Priya Patil",
+      email: "priya@gmail.com",
+      department: "IT",
+      salary: "50000",
+    },
+  ]);
 
-  const [formData, setFormData] =
-    useState({
-      name: "",
-      email: "",
-      department: "",
-      salary: "",
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    department: "",
+    salary: "",
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFormData({
       ...formData,
-      [e.target.name]:
-        e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -46,9 +49,7 @@ function Dashboard() {
       !formData.department ||
       !formData.salary
     ) {
-      alert(
-        "Please fill all fields"
-      );
+      alert("Please fill all fields");
       return;
     }
 
@@ -57,10 +58,7 @@ function Dashboard() {
       ...formData,
     };
 
-    setEmployees([
-      ...employees,
-      newEmployee,
-    ]);
+    setEmployees([...employees, newEmployee]);
 
     setFormData({
       name: "",
@@ -77,12 +75,12 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-100 p-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-4xl font-bold text-blue-700">
-            Employee Management
+            Employee Management Dashboard
           </h1>
 
           <button
@@ -93,7 +91,45 @@ function Dashboard() {
           </button>
         </div>
 
-        {/* Form */}
+        {/* Analytics Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+
+          <div className="bg-blue-600 text-white p-6 rounded-2xl shadow-lg">
+            <h3 className="text-lg">Total Employees</h3>
+            <p className="text-3xl font-bold">
+              {employees.length}
+            </p>
+          </div>
+
+          <div className="bg-green-600 text-white p-6 rounded-2xl shadow-lg">
+            <h3 className="text-lg">Departments</h3>
+            <p className="text-3xl font-bold">
+              4
+            </p>
+          </div>
+
+          <div className="bg-purple-600 text-white p-6 rounded-2xl shadow-lg">
+            <h3 className="text-lg">
+              Active Employees
+            </h3>
+            <p className="text-3xl font-bold">
+              {employees.length}
+            </p>
+          </div>
+
+        </div>
+
+        {/* Notifications */}
+        <div className="mb-8">
+          <NotificationBell />
+        </div>
+
+        {/* Date & Time Picker */}
+        <div className="mb-8">
+          <DateTimePickerCard />
+        </div>
+
+        {/* Add Employee Form */}
         <div className="bg-white p-6 rounded-2xl shadow-lg mb-8">
           <h2 className="text-2xl font-semibold mb-4">
             Add Employee
@@ -136,6 +172,7 @@ function Dashboard() {
               onChange={handleChange}
               className="border p-3 rounded-lg"
             />
+
           </div>
 
           <button
@@ -147,33 +184,63 @@ function Dashboard() {
         </div>
 
         {/* Employee Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
 
-          {employees.map(
-            (employee) => (
-              <div
-                key={employee.id}
-                className="bg-white rounded-2xl shadow-lg p-5 hover:scale-105 transition"
-              >
-                <h3 className="text-xl font-bold text-blue-700">
-                  {employee.name}
-                </h3>
+          {employees.map((employee) => (
+            <div
+              key={employee.id}
+              className="bg-white rounded-2xl shadow-lg p-5 hover:scale-105 transition"
+            >
+              <h3 className="text-xl font-bold text-blue-700">
+                {employee.name}
+              </h3>
 
-                <p className="mt-2">
-                  📧 {employee.email}
-                </p>
+              <p className="mt-2">
+                📧 {employee.email}
+              </p>
 
-                <p>
-                  🏢 {employee.department}
-                </p>
+              <p>
+                🏢 {employee.department}
+              </p>
 
-                <p>
-                  💰 ₹{employee.salary}
-                </p>
-              </div>
-            )
-          )}
+              <p>
+                💰 ₹{employee.salary}
+              </p>
+            </div>
+          ))}
+
         </div>
+
+        {/* DataGrid */}
+        <div className="bg-white p-6 rounded-2xl shadow-lg mb-8">
+          <h2 className="text-2xl font-bold mb-4">
+            Employee DataGrid
+          </h2>
+
+          <EmployeeDataGrid />
+        </div>
+
+        {/* Charts */}
+        <div className="grid md:grid-cols-2 gap-6">
+
+          <div className="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 className="text-xl font-bold mb-4">
+              Employee Statistics
+            </h2>
+
+            <AnalyticsChart />
+          </div>
+
+          <div className="bg-white p-6 rounded-2xl shadow-lg">
+            <h2 className="text-xl font-bold mb-4">
+              Department Distribution
+            </h2>
+
+            <DepartmentPieChart />
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
