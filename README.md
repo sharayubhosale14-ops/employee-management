@@ -78,11 +78,44 @@ export default defineConfig([
 ### Login page
 <img width="1920" height="1080" alt="Login_pg" src="https://github.com/user-attachments/assets/31f1825c-138b-4158-9a1a-7e318e2d8cc9" />
 
-### Dashboard
-<img width="1920" height="1080" alt="Dashboard" src="https://github.com/user-attachments/assets/f484c607-2d17-40b2-90c7-50d4290142b8" />
+### Dashboard, Date & Time Picker
+<img width="1920" height="1080" alt="dashboard png" src="https://github.com/user-attachments/assets/a1b178d4-cc9d-4e98-b47d-5fe2a90f1d3e" />
 
-### Employee List
-<img width="1920" height="1080" alt="Employee_Add" src="https://github.com/user-attachments/assets/b967f9e2-65e1-4b47-9e38-0129da759b02" />
+### Employee Form
+<img width="1920" height="1080" alt="employee-form png" src="https://github.com/user-attachments/assets/b38d1f04-4d5c-4d92-b662-7fe6b80a9ab9" />
 
+### DataGrid
+<img width="1920" height="1080" alt="datagrid png" src="https://github.com/user-attachments/assets/3ea9a325-ef2a-47d5-87eb-db8c252101d7" />
+
+### Charts
+<img width="1920" height="1080" alt="charts png" src="https://github.com/user-attachments/assets/11159558-7e8a-4ade-a2c4-aa0bc1981aa0" />
+
+
+# Employee Management Dashboard
+
+A React + TypeScript Employee Management Dashboard.
+
+## Features
+
+- JWT Authentication
+- Protected Routes
+- React Query
+- Employee CRUD
+- MUI DataGrid
+- Recharts Analytics
+- Notifications
+- Date & Time Pickers
+- Responsive UI
+
+
+## Tech Stack
+
+- React
+- TypeScript
+- Tailwind CSS
+- MUI
+- React Query
+- Recharts
+- React Router
 # Author
 SHARAYU BHOSALE
