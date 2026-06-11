@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import EmployeeDataGrid from "../components/EmployeeDataGrid";
 import AnalyticsChart from "../components/AnalyticsChart";
 import DepartmentPieChart from "../components/DepartmentPieChart";
 import NotificationBell from "../components/NotificationBell";
 import DateTimePickerCard from "../components/DateTimePickerCard";
 
+type Employee = {
+  id: number;
+  name: string;
+  email: string;
+  department: string;
+  salary: string;
+};
+
 function Dashboard() {
   const navigate = useNavigate();
 
-  const [employees, setEmployees] = useState<any[]>([
+  // ✅ FIXED INITIAL STATE (this was broken in your code)
+  const [employees, setEmployees] = useState<Employee[]>([
     {
       id: 1,
       name: "Rahul Sharma",
@@ -33,9 +43,7 @@ function Dashboard() {
     salary: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -53,7 +61,7 @@ function Dashboard() {
       return;
     }
 
-    const newEmployee = {
+    const newEmployee: Employee = {
       id: Date.now(),
       ...formData,
     };
@@ -103,15 +111,11 @@ function Dashboard() {
 
           <div className="bg-green-600 text-white p-6 rounded-2xl shadow-lg">
             <h3 className="text-lg">Departments</h3>
-            <p className="text-3xl font-bold">
-              4
-            </p>
+            <p className="text-3xl font-bold">4</p>
           </div>
 
           <div className="bg-purple-600 text-white p-6 rounded-2xl shadow-lg">
-            <h3 className="text-lg">
-              Active Employees
-            </h3>
+            <h3 className="text-lg">Active Employees</h3>
             <p className="text-3xl font-bold">
               {employees.length}
             </p>
@@ -195,17 +199,9 @@ function Dashboard() {
                 {employee.name}
               </h3>
 
-              <p className="mt-2">
-                📧 {employee.email}
-              </p>
-
-              <p>
-                🏢 {employee.department}
-              </p>
-
-              <p>
-                💰 ₹{employee.salary}
-              </p>
+              <p className="mt-2">📧 {employee.email}</p>
+              <p>🏢 {employee.department}</p>
+              <p>💰 ₹{employee.salary}</p>
             </div>
           ))}
 

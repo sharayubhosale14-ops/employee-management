@@ -23,20 +23,32 @@ function Login() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      const response = await loginUser(data);
+  try {
+    const response = await loginUser(data);
 
-      if (response?.accessToken) {
-        localStorage.setItem("token", response.accessToken);
-        navigate("/dashboard");
-      } else {
-        alert("Login failed: No token received");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Login error occurred");
+    if (response?.accessToken) {
+      localStorage.setItem(
+        "token",
+        response.accessToken
+      );
+
+      
+      localStorage.setItem(
+        "role",
+        "admin"
+      );
+
+      navigate("/dashboard");
+    } else {
+      alert(
+        "Login failed: No token received"
+      );
     }
-  };
+  } catch (error) {
+    console.error(error);
+    alert("Login error occurred");
+  }
+};
 
   return (
     <div className="min-h-screen bg-blue-500 flex items-center justify-center">
@@ -56,6 +68,7 @@ function Login() {
           {/* Email */}
           <div>
             <input
+              aria-label="Email"
               type="email"
               placeholder="Enter Email"
               {...register("email")}
@@ -69,7 +82,8 @@ function Login() {
           {/* Password */}
           <div>
             <input
-              type="password"
+            aria-label="Password"
+            type="password"
               placeholder="Enter Password"
               {...register("password")}
               className="w-full p-3 rounded-xl outline-none bg-white text-gray-800"
@@ -81,6 +95,7 @@ function Login() {
 
           {/* Button */}
           <button
+            aria-label="Login Button"
             type="submit"
             className="w-full bg-white text-purple-700 font-bold py-3 rounded-xl hover:scale-105 transition-all duration-300"
           >
